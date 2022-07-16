@@ -2,6 +2,8 @@ version: "3.9"
 services:
   postgres:
     image: "postgres"
+    networks:
+      - "jenkins"
     ports:
       - "5432:5432"
     environment:
@@ -10,6 +12,8 @@ services:
       POSTGRES_DB: "postgres"
   jenkins:
     image: "myjenkins-blueocean"
+    networks:
+      - "jenkins"
     ports:
       - "8080:8080"
       - "50000:50000"
@@ -20,6 +24,24 @@ services:
     volumes:
       - "jenkins-data:/var/jenkins_home"
       - "jenkins-docker-certs:/certs/client:ro"
+  dind:
+    image: "docker:dind"
+    privileged: true
+    networks:
+      jenkins:
+        aliases:
+          - "docker"
+    ports:
+      - "2376:2376"
+    environment:
+      DOCKER_TLS_CERTDIR: "/certs"
+    volumes:
+      - "jenkins-data:/var/jenkins_home"
+      - "jenkins-docker-certs:/certs/client"
+
+networks:
+  jenkins:
+
 volumes:
   jenkins-data:
   jenkins-docker-certs:

@@ -1,7 +1,7 @@
 docker run \
-  -e DB_USER="postgres" \
-  -e DB_PASSWORD="postgres" \
-  -e DB_HOST="alembic-test-postgres-1" \
+  -e DB_USER="eknzdrzr" \
+  -e DB_PASSWORD="0GemY9X287Gz0uCrPy4UYUunfBvVhajM" \
+  -e DB_HOST="satao.db.elephantsql.com" \
   -e DB_PORT="5432" \
-  -e DB_NAME="postgres" \
+  -e DB_NAME="eknzdrzr" \
   alembic-runner

@@ -1,5 +1,4 @@
 docker run \
-  -it \
   -e DB_USER="postgres" \
   -e DB_PASSWORD="postgres" \
   -e DB_HOST="host.network.internal" \

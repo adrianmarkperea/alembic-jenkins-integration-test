@@ -12,7 +12,7 @@ run_alembic() {
   echo "Running alembic"
   for namespace in "${namespaces[@]}"
   do
-    python3 -m alembic -name $namespace upgrade head
+    python3 -m alembic -n $namespace upgrade head
   done
 }
 

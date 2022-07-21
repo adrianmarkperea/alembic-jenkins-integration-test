@@ -14,6 +14,7 @@ pipeline {
       steps {
         script {
           echo 'executing alembic-runner'
+          sh 'apt-get install -y libpq-dev'
           sh 'pip install -r requirements.txt'
           sh 'chmod +x deploy.sh'
           sh './deploy.sh'

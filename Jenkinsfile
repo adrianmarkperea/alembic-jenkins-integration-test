@@ -16,10 +16,10 @@ pipeline {
         withEnv(["HOME=${env.WORKSPACE}"]) {
           echo 'executing alembic-runner'
           sh 'python3 -m pip install -r requirements.txt'
-          sh 'chmod +x deploy.sh'
-          sh './deploy.sh'
           sh 'chmod +x execute.sh'
           sh './execute.sh'
+          sh 'chmod +x deploy.sh'
+          sh './deploy.sh'
         }
       }
     }

@@ -14,6 +14,8 @@ pipeline {
       steps {
         script {
           echo 'executing alembic-runner'
+          sh 'chmod +x deploy.sh'
+          sh './deploy.sh'
           sh 'chmod +x execute.sh'
           sh './execute.sh'
         }

@@ -15,8 +15,7 @@ pipeline {
       steps {
         script {
           echo 'executing alembic-runner'
-          sh 'pip install --upgrade pip'
-          sh 'pip install alembic==1.7.7'
+          sh 'pip install alembic==1.7.7 --user'
           sh 'chmod +x deploy.sh'
           sh './deploy.sh'
           sh 'chmod +x execute.sh'

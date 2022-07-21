@@ -8,7 +8,6 @@ pipeline {
         script {
           echo 'building alembic-runner'
           sh 'chmod +x build.sh'
-          sh './build.sh'
         }
       }
     }

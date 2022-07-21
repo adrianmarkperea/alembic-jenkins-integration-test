@@ -12,15 +12,13 @@ pipeline {
       }
     }
     stage('execute') {
-      steps {
-        script {
+      withEnv(["HOME=${env.WORKSPACE}"]) {
           echo 'executing alembic-runner'
           sh 'python3 -m pip install alembic==1.7.7'
           sh 'chmod +x deploy.sh'
           sh './deploy.sh'
           sh 'chmod +x execute.sh'
           sh './execute.sh'
-        }
       }
     }
     stage('clean') {

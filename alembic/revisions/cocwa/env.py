@@ -58,6 +58,8 @@ def url_from_environ():
     port = os.environ.get("DB_PORT")
     database_name = os.environ.get("DB_NAME")
 
+    print(f"[TEST] {username}, {host}")
+
     return f"postgresql://{username}:{password}@{host}:{port}/{database_name}"
 
 

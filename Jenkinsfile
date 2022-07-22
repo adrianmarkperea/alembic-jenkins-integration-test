@@ -1,21 +1,17 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'python:3' }
+  }
   stages {
-    stage('build') {
-      steps {
-        script {
-          echo 'building alembic-runner'
-          sh 'chmod +x build.sh'
-          sh './build.sh'
-        }
-      }
-    }
     stage('execute') {
       steps {
-        script {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
           echo 'executing alembic-runner'
+          sh 'python3 -m pip install -r requirements.txt'
           sh 'chmod +x execute.sh'
           sh './execute.sh'
+          sh 'chmod +x deploy.sh'
+          sh './deploy.sh'
         }
       }
     }

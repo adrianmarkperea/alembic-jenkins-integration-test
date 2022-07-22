@@ -29,4 +29,4 @@ case $ENVIRONMENT_NAME in
     ;;
 esac
 
-run_alembic 
+run_alembic
